@@ -1,20 +1,28 @@
-icons = {
-  "Pawn" => "o",
-  "Rook" => "+",
-  "Knight" => "!",
-  "Bishop" => "^",
-  "Queen" => "*",
-  "King" => "x",
+$icons = {
+  "Pawn" => "*", # ♙
+  "Rook" => "+", # ♖
+  "Knight" => "!", # ♘
+  "Bishop" => "x", # ♗
+  "Queen" => "U", # ♕
+  "King" => "§", # ♔
 
-  "black" => "#",
-  "white" => " "
+  "Black" => "\u25A0", # ■
+  "White" => " " #
 }
 
 class Graphics
-  def display(id,x,y)
-    td = icons[id];
+  def display_board(b);
+  system ("cls")
 
-  end
-  def display_board(board);
+  board = b.get_map();
+    board.each_with_index do |subarr,x|
+      str = "";
+
+      subarr.each_with_index do |value,y|
+        str += "[" + $icons[value] + "]";
+      end
+
+      puts(str);
+    end
   end
 end
